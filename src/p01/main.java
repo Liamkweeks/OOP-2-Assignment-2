@@ -3,13 +3,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import 
 public class main
 {
-
-	public static void main(String[] args)
-	{
+	//scanner for user input
+	Scanner userInput = new Scanner(System.in);
+	
+	//list method
+	public ArrayList<Vehicle> generateList()
+	{	
 		ArrayList<Vehicle> Vehicles = new ArrayList<Vehicle>();
-		
 		File VehicleFile = new File("vehicles.txt");
 		try (Scanner fileReader = new Scanner(VehicleFile))
 		{
@@ -25,6 +28,7 @@ public class main
 		            parts[i] = parts[i].trim();
 		        }
 				
+				//adds a new vehicle of the requisite type to the arraylist
 				switch(parts[1])
 					{
 					case "Sedan":
@@ -56,6 +60,195 @@ public class main
 		{
 			e.printStackTrace();
 		}
+		return Vehicles;
+	}
+	
+	public ArrayList<Vehicle> purchaseVehicle(ArrayList<Vehicle> Vehicles)
+	{
+		
+		boolean foundCar = false; 
+		
+		System.out.print("Enter Car ID: ");
+		
+		long carId = Long.parseLong(userInput.nextLine());
+		
+		loop : for(Vehicle vehicle : Vehicles)
+		{
+			if(vehicle.getCarId() == carId)
+			{
+				vehicle.checkout();
+				foundCar = true;
+				break loop;	
+			}
+			
+		}
+		
+		if(foundCar = false)
+		{
+			System.out.println("Invalid Car ID, No car found.");
+			return Vehicles;
+		}
+		else
+		{
+			return Vehicles;
+		}
+		
+	}
+	public void vehicleSearch(ArrayList<Vehicle> Vehicles)
+	{
+		System.out.print("Enter vehicle type to search for: (Sedan, SUV, Hatchback, Pickup Truck and Hybrid car) ");
+		String carType = userInput.nextLine().toUpperCase();
+		
+		switch(carType)
+		{
+			case "SEDAN":
+				for(Vehicle vehicle : Vehicles)
+				{
+					if(vehicle.getVehicleType().toUpperCase().equals("SEDAN"))
+					{
+						String formattedTrunkSize;
+						if(((Sedan)vehicle).getTrunkSize().equals("S"))
+						{
+							formattedTrunkSize = "Small Trunk";
+						}
+						else if(((Sedan)vehicle).getTrunkSize().equals("M"))
+						{
+							formattedTrunkSize = "Moderate Trunk";
+						}
+						else if(((Sedan)vehicle).getTrunkSize().equals("L"))
+						{
+							formattedTrunkSize = "Large/Spacious Trunk";
+						}
+						System.out.println(String.format(
+							"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n %s %n Speed:	%s %n Fuel:	%s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n Trunk Size: %s %n",
+							vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity(),formattedTrunkSize));
+					}
+				}
+				break;
+			case "SUV":
+				for(Vehicle vehicle : Vehicles)
+				{
+					if(vehicle.getVehicleType().toUpperCase().equals("SUV"))
+					{
+						System.out.println(String.format(
+								"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n %s %n Speed:	%s %n Fuel:	%s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n",
+								vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity()));
+					}
+				}
+				break;
+			case "HATCHBACK":
+				for(Vehicle vehicle : Vehicles)
+				{
+					if(vehicle.getVehicleType().toUpperCase().equals("HATCHBACK"))
+					{
+						String formattedHatchType;
+						if(((Hatchback)vehicle).getHatchType().equals("S"))
+						{
+							formattedHatchType = "Standard Liftgate";
+						}
+						else if(((Hatchback)vehicle).getHatchType().equals("T"))
+						{
+							formattedHatchType = "Split Liftgate";
+						}
+						else if(((Hatchback)vehicle).getHatchType().equals("P"))
+						{
+							formattedHatchType = "Power Liftgate";
+						}
+						System.out.println(String.format(
+							"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n %s %n Speed:	%s %n Fuel:	%s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n Hatch Type: %s %n",
+							vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity(),formattedHatchType));
+					}
+				}
+				break;
+			case "PICKUP TRUCK":
+				for(Vehicle vehicle : Vehicles)
+				{
+					if(vehicle.getVehicleType().toUpperCase().equals("PICKUP TRUCK"))
+					{
+						String formattedCargoBed;
+						if(((Hatchback)vehicle).getHatchType().equals("SB"))
+						{
+							formattedCargoBed = "Short Bed";
+						}
+						else if(((Hatchback)vehicle).getHatchType().equals("EB"))
+						{
+							formattedCargoBed = "Extended Bed";
+						}
+						else if(((Hatchback)vehicle).getHatchType().equals("DB"))
+						{
+							formattedCargoBed = "Dump Bed";
+						}
+						
+						
+						System.out.println(String.format(
+								"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n %s %n Speed:	%s %n Fuel:	%s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n Cargo Bed: %s %n Cargo Capacity: %s %n",
+								vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity(),formattedCargoBed,((PickupTruck)vehicle).getCargoCapacity()));
+					}
+				}
+				break;
+			case "HYBRID":
+				for(Vehicle vehicle : Vehicles)
+				{
+					if(vehicle.getVehicleType().toUpperCase().equals("HYBRID"))
+					{
+						String formattedPowerTrain;
+						if(((Hybrid)vehicle).getPowerTrain().equals("E"))
+						{
+							formattedPowerTrain = "Series Hybrid";
+						}
+						else if(((Hybrid)vehicle).getPowerTrain().equals("A"))
+						{
+							formattedPowerTrain = "Parallel Hybrid";
+						}
+						else if(((Hybrid)vehicle).getPowerTrain().equals("PHEV"))
+						{
+							formattedPowerTrain = "Plug-in Hybrid";
+						}
+						System.out.println(String.format(
+								"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n %s %n Speed:	%s %n Fuel:	%s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n Power Train: %s %n Electric Range: %s %n",
+								vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity(),formattedPowerTrain,((Hybrid)vehicle).getElectricRange()));
+					}
+				}
+				break;
+			
+		}
+			
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		System.out.println("Matching vehicles:");
+		for(Vehicle vehicle : Vehicles)
+		{
+			if(vehicle.getVehicleType().equals(carType))
+			{
+				
+			}
+		}
+		
+	}
+	
+	
+	
+	public static void main(String[] args)
+	{
+	
+		
+		
+		
+		
+		//TESTING AREA
+		
+		
 		for(Vehicle vehicle : Vehicles)
 		{
 		System.out.println(vehicle);

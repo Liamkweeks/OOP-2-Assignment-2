@@ -50,6 +50,7 @@ public class Hybrid extends Vehicle
 	{
 		super(carId, vehicleType, subtype, speed, fuel, seats, year, drivetrain,  price, quantity);
 		setPowerTrain(powerTrain);
+		setElectricRange(electricRange);
 	}
 	
 	@Override

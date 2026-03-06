@@ -50,6 +50,7 @@ public class PickupTruck extends Vehicle
 		{
 			super(carId, vehicleType, subtype, speed, fuel, seats, year, drivetrain,  price, quantity);
 			setCargoBed(cargoBed);
+			setCargoCapacity(cargoCapacity);
 		}
 		
 		@Override

@@ -248,13 +248,13 @@ Scanner userInput = new Scanner(System.in);
 				carList : for (Vehicle vehicle : vehicles) {
 					if(vehicle.getVehicleType().toUpperCase().equals("PICKUP TRUCK"))
 					{
-						// Switch statement to check what type of hatchback subtype the user inputed
+						// Switch statement to check what type of pickup truck subtype the user inputed
 						switch (bedType) 
 						{
 							case "SB":
 								if (((PickupTruck)vehicle).getCargoBed().toUpperCase().equals("SB")) 
 								{
-									System.out.println(((PickupTrick)vehicle).getDetails());
+									System.out.println(((PickupTruck)vehicle).getDetails());
 								}
 								break;
 							case "EB":
@@ -278,15 +278,15 @@ Scanner userInput = new Scanner(System.in);
 				break;
 			case "HYBRID":
 				System.out.print("Enter Power Train Type (E for Series Hybrid, A for Parallel Hybrid, PHEV for Plug-in Hybrid): ");
-				String bedType = userInput.nextLine().toUpperCase();
+				String powerTrainType = userInput.nextLine().toUpperCase();
 				carList : for (Vehicle vehicle : vehicles) {
 					if(vehicle.getVehicleType().toUpperCase().equals("HYBRID"))
 					{
 						// Switch statement to check what type of Hybrid subtype the user inputed
-						switch (bedType) 
+						switch (powerTrainType) 
 						{
 							case "E":
-								if (((Hybrid)vehicle).getPowerTraingetCargoBed().toUpperCase().equals("E")) 
+								if (((Hybrid)vehicle).getPowerTrain().toUpperCase().equals("E")) 
 								{
 									System.out.println(((Hybrid)vehicle).getDetails());
 								}
@@ -332,8 +332,8 @@ Scanner userInput = new Scanner(System.in);
 		for(int i = 0; i < vehicleCount; i++)
 		{
 			int randomIndex = rand.nextInt(length);
-			// need to make this so it checks what type of vehicle it is then use the getDetails method to print
-			System.out.println(vehicleList.get(randomIndex));
+			Vehicle vehicle = vehicleList.get(randomIndex);
+			System.out.println(vehicle.getDetails());
 		}
 	}
 	

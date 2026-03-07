@@ -37,9 +37,26 @@ public abstract class Vehicle
 	{
 		this.year = year;
 	}
+
+	// Drivetrain Validation
 	public void setDrivetrain(String drivetrain)
 	{
-		this.drivetrain = drivetrain;
+		switch(drivetrain.toUpperCase())
+		{
+		case "AWD":
+			this.drivetrain = drivetrain;
+			break;
+		case "4WD":
+			this.drivetrain = drivetrain;
+			break;
+		case "FWD":
+			this.drivetrain = drivetrain;
+			break;
+		default:
+			this.drivetrain = null;
+			System.out.println("Invalid drivetrain, please input \"ADW\", \"4WD\", or \"FWD\"");
+			break;
+		}
 	}
 	public void setPrice(int price)
 	{

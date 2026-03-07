@@ -17,22 +17,22 @@ public class main
 			
 			System.out.print(String.format("%nWelcome to DriveMasters%nPlease choose any option below%n---------------------------------%n1\tPurchase Vehicle%n2\tDisplay Vehicles by Type%n3\tDisplay Vehicles by Subtype%n4\tProduce a Random List of Vehicles%n5\tSave & Exit%nEnter Option: "));
 			
-			int menuInput = Integer.parseInt(userInput2.nextLine());
+			String menuInput = userInput2.nextLine();
             
 			switch (menuInput) {
-                case 1:
+                case "1":
                 	vehicleList = menu.purchaseVehicle(vehicleList);
                     break;
-                case 2:
+                case "2":
                     menu.vehicleSearch(vehicleList);
                     break;
-                case 3:
+                case "3":
                     menu.subtypeSearch(vehicleList);
                     break;
-                case 4:
+                case "4":
                     menu.randomVehicle(vehicleList);
                     break;
-                case 5:
+                case "5":
                     System.out.println("You have chosen to save and exit. Goodbye!");
                     userInput2.close();
                     break menuLoop;

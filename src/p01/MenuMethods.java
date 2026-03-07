@@ -2,6 +2,7 @@ package p01;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
@@ -346,11 +347,14 @@ Scanner userInput = new Scanner(System.in);
 		System.out.print("Enter Car ID: ");
 		long carId = Long.parseLong(userInput.nextLine());
 		
-		loop : for(Vehicle vehicle : Vehicles)
+		loop : for(int i = 0; i < Vehicles.size(); i++)
 		{
+			Vehicle vehicle = Vehicles.get(i);
 			if(vehicle.getCarId() == carId)
 			{
-				vehicle.checkout();
+				vehicle = vehicle.checkout(vehicle);
+				// replaces current vehicle in the list with the updated vehicle that has the decremented quantity
+				Vehicles.set(i, vehicle);
 				foundCar = true;
 				break loop;	
 			}
@@ -364,6 +368,24 @@ Scanner userInput = new Scanner(System.in);
 		else
 		{
 			return Vehicles;
+		}
+	}
+
+	public void saveAndExit(ArrayList<Vehicle> Vehicles)
+	{
+		// Method to save the updated vehicle list to the text file before exiting the program
+		File vehicleFile = new File("res/vehicles.txt");
+		try (PrintWriter writer = new PrintWriter(vehicleFile))
+		{
+			for (Vehicle vehicle : Vehicles) 
+			{
+				writer.println(vehicle.toString());
+			}
+			System.out.println("Successfully wrote to vehicles.txt");
+		} 
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
 		}
 	}
 	

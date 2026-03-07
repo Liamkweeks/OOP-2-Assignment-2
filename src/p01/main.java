@@ -33,6 +33,7 @@ public class main
                     menu.randomVehicle(vehicleList);
                     break;
                 case "5":
+                    menu.saveAndExit(vehicleList);
                     System.out.println("You have chosen to save and exit. Goodbye!");
                     userInput2.close();
                     break menuLoop;

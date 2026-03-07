@@ -139,17 +139,18 @@ public abstract class Vehicle
 	
 	//Checkout method, checks availability then decrements quantity by 1 if vehicle is available
 	//Prints a message saying if the vehicle has been checked out or if it is not available
-	public void checkout()
+	public Vehicle checkout(Vehicle soldVehicle)
 	{
 		if(isAvailable())
 		{
-			setQuantity(getQuantity() - 1);
+			soldVehicle.setQuantity(soldVehicle.getQuantity() - 1);
 			System.out.println(String.format("The Vehicle \"%s %s\" has been checked out. ", getVehicleType(), getSubtype()));
 		}
 		else
 		{
 			System.out.println("This vehicle is not available");
 		}
+		return soldVehicle;
 	}
 	
 	// getDetails method to return a string with all elements displayed vertically

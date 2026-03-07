@@ -7,7 +7,6 @@ public abstract class Vehicle
 	private String vehicleType, subtype, drivetrain;
 	private int speed, seats, year, price, quantity;
 	private double fuel;
-//	Defining methods for vehicle abstract class
 	
 	//Setters
 	public void setCarId(long carId)
@@ -93,7 +92,7 @@ public abstract class Vehicle
 		return this.quantity;
 	}
 	
-	//Constructor(s)
+	//Constructor for vehicle class, takes in all variables as parameters and sets them using the setter methods
 	public Vehicle(long carId, String vehicleType, String subtype, int speed, double fuel, int seats, int year, String drivetrain, int price, int quantity)
 	{
 		setCarId(carId);
@@ -108,7 +107,7 @@ public abstract class Vehicle
 		setQuantity(quantity);
 	}
 
-	//	boolean to check availability
+	//boolean method to check if the vehicle is available by checking if quantity is greater than 0
 	public Boolean isAvailable()
 	{
 		if(getQuantity() > 0)
@@ -122,6 +121,7 @@ public abstract class Vehicle
 	}
 	
 	//Checkout method, checks availability then decrements quantity by 1 if vehicle is available
+	//Prints a message saying if the vehicle has been checked out or if it is not available
 	public void checkout()
 	{
 		if(isAvailable())
@@ -135,7 +135,15 @@ public abstract class Vehicle
 		}
 	}
 	
-	//toString
+	// getDetails method to return a string with all elements displayed vertically
+	public String getDetails()
+	{
+		return String.format(
+			"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n Speed: %s %n Fuel: %s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n",
+			getCarId(), getVehicleType(), getSubtype(), getSpeed(), getFuel(),getSeats(), getYear(), getDrivetrain(), getPrice(),getQuantity());
+	}
+
+	//toString method to return a string formatted like the vehicle.txt file
 	@Override public String toString()
 	{
 		return String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;",getCarId(),getVehicleType(),getSubtype(),getSpeed(),getFuel(),getSeats(),getYear(),getDrivetrain(),getPrice(),getQuantity());

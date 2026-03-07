@@ -205,22 +205,7 @@ Scanner userInput = new Scanner(System.in);
 				{
 					if(vehicle.getVehicleType().toUpperCase().equals("SEDAN"))
 					{
-						String formattedTrunkSize = null;
-						if(((Sedan)vehicle).getTrunkSize().equals("S"))
-						{
-							formattedTrunkSize = "Small Trunk";
-						}
-						else if(((Sedan)vehicle).getTrunkSize().equals("M"))
-						{
-							formattedTrunkSize = "Moderate Trunk";
-						}
-						else if(((Sedan)vehicle).getTrunkSize().equals("L"))
-						{
-							formattedTrunkSize = "Large/Spacious Trunk";
-						}
-						System.out.println(String.format(
-							"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n Speed: %s %n Fuel: %s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n Trunk Size: %s %n",
-							vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity(),formattedTrunkSize));
+						System.out.println(((Sedan)vehicle).getDetails());
 					}
 				}
 				break;
@@ -229,9 +214,7 @@ Scanner userInput = new Scanner(System.in);
 				{
 					if(vehicle.getVehicleType().toUpperCase().equals("SUV"))
 					{
-						System.out.println(String.format(
-								"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n Speed: %s %n Fuel: %s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n",
-								vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity()));
+						System.out.println(((SUV)vehicle).getDetails());
 					}
 				}
 				break;
@@ -240,22 +223,7 @@ Scanner userInput = new Scanner(System.in);
 				{
 					if(vehicle.getVehicleType().toUpperCase().equals("HATCHBACK"))
 					{
-						String formattedHatchType = null;
-						if(((Hatchback)vehicle).getHatchType().equals("S"))
-						{
-							formattedHatchType = "Standard Liftgate";
-						}
-						else if(((Hatchback)vehicle).getHatchType().equals("T"))
-						{
-							formattedHatchType = "Split Liftgate";
-						}
-						else if(((Hatchback)vehicle).getHatchType().equals("P"))
-						{
-							formattedHatchType = "Power Liftgate";
-						}
-						System.out.println(String.format(
-							"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n Speed: %s %n Fuel: %s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n Hatch Type: %s %n",
-							vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity(),formattedHatchType));
+						System.out.println(((Hatchback)vehicle).getDetails());
 					}
 				}
 				break;
@@ -264,24 +232,7 @@ Scanner userInput = new Scanner(System.in);
 				{
 					if(vehicle.getVehicleType().toUpperCase().equals("PICKUP TRUCK"))
 					{
-						String formattedCargoBed = null;
-						if(((PickupTruck)vehicle).getCargoBed().equals("SB"))
-						{
-							formattedCargoBed = "Short Bed";
-						}
-						else if(((PickupTruck)vehicle).getCargoBed().equals("EB"))
-						{
-							formattedCargoBed = "Extended Bed";
-						}
-						else if(((PickupTruck)vehicle).getCargoBed().equals("DB"))
-						{
-							formattedCargoBed = "Dump Bed";
-						}
-						
-						
-						System.out.println(String.format(
-								"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n Speed: %s %n Fuel: %s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n Cargo Bed: %s %n Cargo Capacity: %s %n",
-								vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity(),formattedCargoBed,((PickupTruck)vehicle).getCargoCapacity()));
+						System.out.println(((PickupTruck)vehicle).getDetails());
 					}
 				}
 				break;
@@ -290,22 +241,7 @@ Scanner userInput = new Scanner(System.in);
 				{
 					if(vehicle.getVehicleType().toUpperCase().equals("HYBRID"))
 					{
-						String formattedPowerTrain = null;
-						if(((Hybrid)vehicle).getPowerTrain().equals("E"))
-						{
-							formattedPowerTrain = "Series Hybrid";
-						}
-						else if(((Hybrid)vehicle).getPowerTrain().equals("A"))
-						{
-							formattedPowerTrain = "Parallel Hybrid";
-						}
-						else if(((Hybrid)vehicle).getPowerTrain().equals("PHEV"))
-						{
-							formattedPowerTrain = "Plug-in Hybrid";
-						}
-						System.out.println(String.format(
-								"Car ID: %s %n Vehicle Type: %s %n Sub Type: %s %n Speed: %s %n Fuel: %s %n Number of Seats: %s %n Year: %s %n DriveTrain: %s %n Price: %s %n Available: %s %n Power Train: %s %n Electric Range: %s %n",
-								vehicle.getCarId(), vehicle.getVehicleType(), vehicle.getSubtype(), vehicle.getSpeed(), vehicle.getFuel(),vehicle.getSeats(), vehicle.getYear(), vehicle.getDrivetrain(), vehicle.getPrice(),vehicle.getQuantity(),formattedPowerTrain,((Hybrid)vehicle).getElectricRange()));
+						System.out.println(((Hybrid)vehicle).getDetails());
 					}
 				}	
 		}
